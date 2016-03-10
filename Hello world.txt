@@ -5,11 +5,9 @@
 <title>Создаем DOM элементы на странице</title>
 </head>
 <body>
-
 <script>
 alert ("Hello world");
 alert ("Hello you");
 </script>
-
 </body>
 </html>
