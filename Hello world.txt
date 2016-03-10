@@ -1,4 +1,15 @@
-print ("Hello world");
-print ("Hello you");
-print ("Hello Hello");
-print ("Hello you")
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Создаем DOM элементы на странице</title>
+</head>
+<body>
+
+<script>
+alert ("Hello world");
+alert ("Hello you");
+</script>
+
+</body>
+</html>
