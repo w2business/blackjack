@@ -1,5 +1,5 @@
 print ("Hello world");
 print ("Hello you");
 print ("Hello Hello");
-print ("Hello you")
-//вторая версия
+print ("Hello you");
+//вторая версия;
