@@ -21,7 +21,6 @@ else {hand[i]=1;}
 sum+=hand[i];}
 return sum;
 }
-
 //Раздаем карты и открываем их
 var diler=[tianemKartu()];
 var player=[tianemKartu(),tianemKartu()];
