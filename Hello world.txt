@@ -6,6 +6,7 @@
 </head>
 <body>
 <script>
+//первая версия
 alert ("Hello world");
 alert ("Hello you");
 </script>
