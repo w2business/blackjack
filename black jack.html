@@ -1,0 +1,130 @@
+﻿<meta charset="utf-8">
+<script>
+
+//Функция случайной карты
+function tianemKartu(){
+var karty=[6,7,8,9,10,"J","Q","K","A"];
+var karta=(Math.round(Math.random()*(karty.length-1)));
+return karta=karty[karta];
+}
+//Выводим карты дилера и игрока
+function getStatus(){
+return ("Карты дилера: " + diler.join(" и ") + "\nКарты игрока: " + player.join(" и "));
+}
+
+//Считаем карты игрока
+function pods4et(hand){
+var sum=0;
+for(var i=0;i<hand.length;i++){
+var nominal=0;
+if(hand[i]=="J"||hand[i]=="Q"||hand[i]=="K"){
+nominal=10;}
+else if(hand[i]=="A"){
+if(sum<=10){
+nominal=11;}
+else {nominal=1;}
+}
+else {nominal=hand[i]};
+sum+=nominal;}
+return sum;
+}
+
+
+top:
+for(i=0; true; i++) {
+//Раздаем карты и открываем их
+var diler=[tianemKartu()];
+var player=[tianemKartu(),tianemKartu()];
+var answer;
+
+alert(getStatus()+"\nСумма карт дилера " + pods4et(diler)+"\nСумма карт игрока " + pods4et(player));
+
+//цикл игрока
+do {
+if(pods4et(player)>21){
+alert("Перебор!\nСумма карт игрока " + pods4et(player)+"\n"+getStatus());
+break;
+}
+else if(pods4et(player)==21){
+alert("Black Jack!\nСумма карт игрока " + pods4et(player)+"\n"+getStatus());
+break;
+}
+else if(pods4et(player)<21){
+if (confirm(getStatus()+".\nЕще карту?\nДа или нет?")) {
+answer=1;
+} else {
+answer=0;
+}
+if(answer==1){
+player.push(tianemKartu());
+}
+}
+}
+while(answer==1);
+
+alert("Игрок закончил. Ход дилера.");
+
+//Цикл дилера
+do {
+if(pods4et(player)>21){
+alert("У игрока перебор. Дилер произносит «много» и снимает ставку игрока в пользу казино.");
+break;
+}
+if(pods4et(diler)>21){
+alert("Перебор!\nСумма карт дилера " + pods4et(diler)+"\n"+getStatus());
+break;
+}
+if(pods4et(diler)==21){
+alert("Black Jack!\nСумма карт дилера " + pods4et(diler)+"\n"+getStatus());
+break;
+}
+if(pods4et(diler)<17){
+alert("Дилер берет еще одну карту.");
+diler.push(tianemKartu());
+
+}
+if(pods4et(diler)>=17){
+alert("Сумма карт дилера " + pods4et(diler)+"\n"+getStatus());
+break;
+}
+}
+while(true);
+
+
+//Проверка, кто выиграл
+if(pods4et(player)>21&&pods4et(diler)<=21){
+alert("У игрока перебор. Дилер выиграл!");
+}
+if(pods4et(player)<21&&pods4et(diler)>21){
+alert("У дилера перебор. Игрок выиграл!");
+}
+if(pods4et(player)==21&&pods4et(diler)==21){
+alert("У игрока и дилера Black Jack! Ничья.");
+}
+if(pods4et(player)==21&&pods4et(diler)!=21){
+alert("У игрока Black Jack! Победа!");
+}
+if(pods4et(player)==pods4et(diler)&&pods4et(player)<21&&pods4et(diler)<21){
+alert("Ничья.");
+}
+if(pods4et(player)<pods4et(diler)&&pods4et(player)<21&&pods4et(diler)<21){
+alert("Дилер выиграл!");
+}
+if(pods4et(player)>pods4et(diler)&&pods4et(player)<21&&pods4et(diler)<21){
+alert("Игрок выиграл!");
+}
+
+
+//Еще партейку?
+var again=0;
+if (confirm("Сыграем еще раз?")) {
+again=1;
+} else {
+  alert("Благодарим за игру, Вы вышли.")
+}
+
+if (again==1) continue top;
+else break;
+
+}
+</script>
