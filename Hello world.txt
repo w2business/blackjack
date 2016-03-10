@@ -2,4 +2,5 @@ print ("Hello world");
 print ("Hello you");
 print ("Hello Hello");
 print ("Hello you friend")
+print ("Happy")
 //вторая версия
